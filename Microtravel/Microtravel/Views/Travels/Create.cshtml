@@ -1,0 +1,76 @@
+﻿@model Microtravel.Models.Travel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Új utazás rögzítése</h1>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" method="post" enctype="multipart/form-data">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label">Utazás neve</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TravelDate" class="control-label">Tervezett kezdési dátum</label>
+                <input asp-for="TravelDate" class="form-control" />
+                <span asp-validation-for="TravelDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TravelTypeId" class="control-label">Utazás Típusa</label>
+                <select asp-for="TravelTypeId" class="form-control" asp-items="ViewBag.TravelTypeId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="TravelDealTypeId" class="control-label">Utazás jellege</label>
+                <select asp-for="TravelDealTypeId" class="form-control" asp-items="ViewBag.TravelDealTypeId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label">Utazás leírása</label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label">Utazás ár</label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="travelPictureUrl" class="control-label">Válassz képet...</label>
+                <input type="file" name="file" class="form-control" required accept="image/*" />
+                <span asp-validation-for="travelPictureUrl" class="text-danger"></span>
+            </div>
+            
+            @*
+                ezt majd le kell programozni
+            <div class="form-group">
+                <label asp-for="TravelRegDate" class="control-label"></label>
+                <input asp-for="TravelRegDate" class="form-control" />
+                <span asp-validation-for="TravelRegDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Enabled" class="control-label"></label>
+                <input asp-for="Enabled" class="form-control" />
+                <span asp-validation-for="Enabled" class="text-danger"></span>
+            </div>
+            *@
+            <div class="form-group">
+                <input type="submit" value="ADATOK FELVITEL" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Vissza az utazásokhoz</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

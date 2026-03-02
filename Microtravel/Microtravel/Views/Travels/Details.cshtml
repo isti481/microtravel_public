@@ -1,0 +1,62 @@
+﻿@section Styles {
+    <link rel="stylesheet" href="~/css/site_travel_details.css" />
+}
+
+@model Microtravel.Models.Travel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+<hr />
+<div class="container mt-4">
+    <div class="mx-auto" style="max-width: 50%;">
+
+        
+
+        <dl class="row">
+            <dt class="col-sm-1"></dt>
+            <dd class="col-sm-11">
+                <h2>@Html.DisplayFor(model => model.Name)</h2>
+            </dd>
+
+            <dt class="col-sm-4">Tervezett kezdés</dt>
+            <dd class="col-sm-8">
+                @(Model.TravelDate.ToString("yyyy.MM.dd"))
+            </dd>
+
+            <dt class="col-sm-4">Utazás típusa</dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.TravelType.Name)
+            </dd>
+
+            <dt class="col-sm-4">Utazás jellege</dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.TravelDealType.Name)
+            </dd>
+
+            <dt class="col-sm-4">Leírás</dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+
+            <dt class="col-sm-4">Ár</dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.Price) EUR
+            </dd>
+
+            <dd class="col-sm-6 text-center">
+                <img src="@Model.travelPictureUrl"
+                     class="img-fluid rounded mt-3"
+                     id="fixed-img" />
+            </dd>
+        </dl>
+
+    </div>
+</div>
+<hr />
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Szerkesztés</a> |
+    <a asp-action="Index">Vissza</a>
+</div>

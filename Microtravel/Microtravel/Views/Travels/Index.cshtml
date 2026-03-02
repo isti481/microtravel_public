@@ -1,0 +1,80 @@
+﻿@model IEnumerable<Microtravel.Models.Travel>
+
+@{
+    ViewData["Title"] = "Utazások kezelése";
+}
+
+<h1>Utazások kezelése</h1>
+
+<p>
+    <a asp-action="Create">Új utazás hozzáadása</a>
+</p>
+<p>
+    <a asp-action="ResetDatabase">Adatbazis reset</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Utazás neve
+            </th>
+            <th>
+                Utazás Típusa
+            </th>
+            <th>
+                Utazás jellege
+            </th>
+            <th>
+                Utazás leírása
+            </th>
+            <th>
+                Utazás ár
+            </th>
+            <th>
+                Tervezett kezdési dátum
+            </th>
+            <th>
+                Utazás regisztrációs dátuma
+            </th>
+            <th>
+                Utazás engedélyezése a weboldalra
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TravelType.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TravelDealType.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price) EUR
+            </td>
+            <td>
+                    @(item.TravelDate.ToString("yyyy.MM.dd"))
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TravelRegDate)
+            </td>
+            <td>
+                    @(item.Enabled == 1 ? "Engedélyezve" : "Letiltva")
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Szerkesztés</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Megtekintés</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Törlés</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

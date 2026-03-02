@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Microtravel";
+}
+
+<h1 class="text-center" style="color: #266882;">
+    Elérhető utazások
+</h1>
+<hr>
+
+<div class="d-flex justify-content-center mt-4 mb-4">
+    <div class="w-50">
+        <input type="text" id="searchBox"
+               class="form-control"
+               placeholder="Utazás keresése..." />
+    </div>
+</div>
+
+@Html.Partial("_TravelCardRender");
+
