@@ -28,6 +28,7 @@ namespace Microtravel.Controllers.API
         public async Task<ActionResult<IEnumerable<Travel>>> GetTravel([FromHeader] string token)
         {
             var apiToken = await _context.Apiuser.FirstOrDefaultAsync(t => t.ApiToken == token);
+     
 
             if (token != apiToken.ApiToken)
             {
@@ -70,6 +71,12 @@ namespace Microtravel.Controllers.API
             var apiToken = await _context.Apiuser.FirstOrDefaultAsync(t => t.ApiToken == token);
 
             if (token != apiToken.ApiToken)
+            {
+                return Unauthorized();
+            }
+
+            // check the POST_booking key
+            if (apiToken.Name != "POST_booking")
             {
                 return Unauthorized();
             }
@@ -126,6 +133,12 @@ namespace Microtravel.Controllers.API
                 return Unauthorized();
             }
 
+            // check the POST_booking key
+            if (apiToken.Name != "POST_booking")
+            {
+                return Unauthorized();
+            }
+
             _context.Travel.Add(travel);
             travel.TravelRegDate = DateTime.Now;
             travel.Enabled = 0;
@@ -168,6 +181,12 @@ namespace Microtravel.Controllers.API
             var apiToken = await _context.Apiuser.FirstOrDefaultAsync(t => t.ApiToken == token);
 
             if (token != apiToken.ApiToken)
+            {
+                return Unauthorized();
+            }
+
+            // check the POST_booking key
+            if (apiToken.Name != "POST_booking")
             {
                 return Unauthorized();
             }
