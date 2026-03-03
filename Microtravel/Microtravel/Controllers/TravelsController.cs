@@ -76,17 +76,6 @@ namespace Microtravel.Controllers
         
 
             return View(travel);
-            
-            //
-            //if (travel == null)
-            //{
-            //    return NotFound();
-            //}
-            //
-
-            //ViewData["TravelDealTypeId"] = new SelectList(_context.Set<TravelDealType>(), "Id", "Name");
-            //ViewData["TravelTypeId"] = new SelectList(_context.Set<TravelType>(), "Id", "Name");
-            //return View();
         }
 
         // GET: Travels/Create

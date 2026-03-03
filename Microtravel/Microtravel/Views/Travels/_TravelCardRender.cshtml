@@ -12,9 +12,9 @@
 
     @foreach (var item in Model)
     {
-        <div class="pt-4 pb-4  col-sm-4">
-            <div class="card" style="width: 18rem; box-shadow:2px 0px 8px #CCCCCC">
-                <img class="card-img-top" src="@item.travelPictureUrl" alt="Card image cap">
+        <div class="pt-4 pb-4 col-12 col-sm-6 col-lg-4">
+            <div class="card w-100" style="box-shadow:2px 0px 8px #CCCCCC">
+                <img class="card-img-top img-fluid" src="@item.travelPictureUrl" style="height:200px; object-fit:cover; width:100%;" alt="Card image cap">
                 <div class="card-body">
                     <h4 class="card-title text-center">@item.Name</h4>
                     <hr />
@@ -34,13 +34,15 @@
                     <h6 class="card-title text-center" style="padding:8px 20px; color:white ;background-color:@(item.TravelType.Name == "Normál" ? "green" : item.TravelType.Name == "Last minute" ? "red" : "gray")">@item.TravelType.Name</h6>
                     <hr />
                     <p class="card-text text-center">Indulás: @item.TravelDate.ToString("yyyy.MM.dd")</p>
-                    <p class="card-text">@item.Description</p>
+                    <p class="card-text text-break">@item.Description</p>
                     <h5 class="text-center" style="    font-family: 'Montserrat', sans-serif !important;
                             font-weight: 500;
                             color: #266882;">
                         @item.Price EUR
                     </h5>
-                    <div class="text-center"><a href="#" class="btn btn-primary ">ÉRDEKEL AZ ÚT</a></div>
+                    <div class="text-center">
+                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary">ÉRDEKEL AZ ÚT</a>
+                    </div>
                 </div>
             </div>
         </div>
