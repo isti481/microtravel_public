@@ -1,0 +1,145 @@
+﻿@*
+	For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    h1, h5 {
+        color: #266882;
+    }
+
+    .card {
+        border-radius: 0.8rem;
+    }
+
+    .btn-primary-custom {
+        background-color: #266882;
+        color: #fff;
+    }
+
+        .btn-primary-custom:hover {
+            background-color: #1f5670;
+        }
+</style>
+
+
+    <div class="text-center mb-5">
+    <h1 class="text-center" style="color: #266882;">Kapcsolat</h1>
+    <hr />
+        <p class="text-muted">Vegye fel velünk a kapcsolatot, örömmel segítünk!</p>
+    </div>
+<section class="container py-5">
+    <div class="row g-4">
+
+        <!-- Elérhetőségek -->
+        <div class="col-lg-6">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body p-4">
+                    <h5 class="fw-semibold mb-4">Elérhetőségek</h5>
+
+                    <p class="mb-3">
+                        <i class="fas fa-map-marker-alt text-secondary me-2"></i>
+                        2600 Vác, Honvéd utca 1.
+                    </p>
+
+                    <p class="mb-3">
+                        <i class="fas fa-envelope text-secondary me-2"></i>
+                        <a href="mailto:travel@microtravel.hu" class="text-decoration-none">
+                            travel@microtravel.hu
+                        </a>
+                    </p>
+
+                    <p class="mb-4">
+                        <i class="fas fa-phone text-secondary me-2"></i>
+                        <a href="tel:+3611234567" class="text-decoration-none">
+                            +36 1 123 4567
+                        </a>
+                    </p>
+
+                    <div class="rounded overflow-hidden">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2681.1934965580754!2d19.134626015931453!3d47.7776958841357!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47402aee5599da9f%3A0x61e23cecd5bf151a!2zVsOhYywgSG9udsOpZCB1LiAxLCAyNjAw!5e0!3m2!1shu!2shu!4v1634212352858!5m2!1shu!2shu"
+                                width="100%"
+                                height="300"
+                                style="border:0;"
+                                allowfullscreen=""
+                                loading="lazy">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Kapcsolati űrlap -->
+        <div class="col-lg-6">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body p-4">
+                    <h5 class="fw-semibold mb-4">Írjon nekünk</h5>
+
+                    <form id="contactForm" method="POST">
+
+                        <div class="mb-3">
+                            <label class="form-label">Név*</label>
+                            <input type="text" name="nev" class="form-control form-control-lg" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">E-mail*</label>
+                            <input type="email" name="email" class="form-control form-control-lg" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Telefon</label>
+                            <input type="text" name="tel" class="form-control form-control-lg" placeholder="+36...">
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label">Üzenet</label>
+                            <textarea name="uzenet" rows="4" class="form-control" required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary-custom w-100">
+                            Üzenet elküldése
+                        </button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- Sikeres üzenet Modal -->
+<div class="modal fade" id="successModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow">
+            <div class="modal-body text-center p-5">
+                <div class="mb-4">
+                    <i class="fas fa-check-circle fa-3x text-success"></i>
+                </div>
+                <h5 class="fw-bold mb-3">Köszönjük az üzenetét!</h5>
+                <p class="text-muted mb-4">Hamarosan jelentkezünk.</p>
+                <button type="button" class="btn btn-primary-custom px-4" data-bs-dismiss="modal">Rendben</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    document.getElementById("contactForm").addEventListener("submit", function(e){
+        e.preventDefault();
+        var modal = new bootstrap.Modal(document.getElementById('successModal'));
+        modal.show();
+
+        this.reset();
+    });
+</script>
+

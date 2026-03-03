@@ -33,5 +33,11 @@ namespace Microtravel.Controllers
         {
             return View();
         }
+
+
+        public async Task<IActionResult> Connect()
+        {
+            return View();
+        }
     }
 }
