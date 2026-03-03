@@ -27,7 +27,7 @@
                         Vestibulum dapibus tristique urna, quis rhoncus velit lacinia sit amet. Fusce hendrerit ornare ex, sit amet lobortis justo tincidunt at.
                     </p>
                     <p>
-                        <a href="/"><button class="pt-3 pb-3 btn btn-secondary">RÓLUNK BŐVEBBEN</button></a>
+                        <a class="pt-3 pb-3 btn btn-secondary" asp-area="" asp-controller="Home" asp-action="AboutUs">RÓLUNK BŐVEBBEN</a>
                     </p>
                    
                 </div>
@@ -47,7 +47,6 @@
                     <h4>Utazás autóbusszal</h4>
                     <img src="uploads/busz-1.jpg" width="100%">
                     <p>Suspendisse dignissim lectus id volutpat facilisis. Vestibulum rhoncus neque nibh, quis dignissim nunc tempor ac. Nulla ultrices, ex eu pharetra eleifend, mi turpis pharetra velit, porta rhoncus erat turpis nec eros.</p>
-                        <button class="btn btn-light text-dark btn-lg" data-toggle="modal" data-target="#myModal" disabled>REGISZTRÁLJ A TARTALOMÉRT!</button>
                 </div>
             </div>
             <div class="col-sm-4">
@@ -55,7 +54,6 @@
                     <h4>Utazás hajóval</h4>
                     <img src="/uploads/hajo-1.jpg" width="100%">
                     <p>Suspendisse dignissim lectus id volutpat facilisis. Vestibulum rhoncus neque nibh, quis dignissim nunc tempor ac. Nulla ultrices, ex eu pharetra eleifend, mi turpis pharetra velit, porta rhoncus erat turpis nec eros.</p>
-                        <button class="btn btn-light text-dark btn-lg" data-toggle="modal" data-target="#myModal" disabled>REGISZTRÁLJ A TARTALOMÉRT!</button>
                 </div>
             </div>
             <div class="col-sm-4">
@@ -63,10 +61,18 @@
                     <h4>Utazás repülővel</h4>
                     <img src="/uploads/repulo-1.jpg" width="100%">
                     <p>Suspendisse dignissim lectus id volutpat facilisis. Vestibulum rhoncus neque nibh, quis dignissim nunc tempor ac. Nulla ultrices, ex eu pharetra eleifend, mi turpis pharetra velit, porta rhoncus erat turpis nec eros.</p>
-                    <button class="btn btn-light text-dark btn-lg" data-toggle="modal" data-target="#myModal" disabled>REGISZTRÁLJ A TARTALOMÉRT!</button>
                 </div>
             </div>
-        </div>
+            @if (User.Identity != null && User.Identity.IsAuthenticated)
+                {
+                    <a class="btn btn-light text-dark btn-lg" asp-area="" asp-controller="Travels" asp-action="Travel">Utazások</a>
+                }
+            else
+                {
+                    <button class="btn btn-light text-dark btn-lg" data-toggle="modal" data-target="#myModal">REGISZTRÁLJ A TARTALOMÉRT!</button>
+                    
+                }
+            </div>
     </div>
 </div>
     </div>

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microtravel.Data;
@@ -12,6 +13,7 @@ using System.Threading.Tasks;
 
 namespace Microtravel.Controllers
 {
+    [Authorize]
     public class TravelsController : Controller
     {
         private readonly MicrotravelContext _context;
@@ -31,6 +33,7 @@ namespace Microtravel.Controllers
         }
 
         // GET: Travels
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Index()
         {
             var microtravelContext1 = await _context.Travel.Include(t => t.TravelDealType).ToListAsync();
