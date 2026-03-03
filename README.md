@@ -25,6 +25,7 @@ Admin funkciók:
 
 ## REST API
 Content-Type application/json
+
 autentikáció: 
 key:token
 value:dzAAeYvO*HUbppD7jh9Sc
