@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microtravel.Data;
 using Microsoft.Extensions.DependencyInjection;
+using Microtravel.Validators;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<MicrotravelContext>(options =>
@@ -13,9 +14,19 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false) // email confirmation 
+// custom validators off 
+builder.Services.AddDefaultIdentity<IdentityUser>(options =>
+    {
+        options.SignIn.RequireConfirmedAccount = false;
+        options.Password.RequireDigit = false;
+        options.Password.RequireLowercase = false;
+        options.Password.RequireNonAlphanumeric = false;
+        options.Password.RequireUppercase = false;
+    })
+    // email confirmation 
     .AddRoles<IdentityRole>() // sajat
-    .AddEntityFrameworkStores<ApplicationDbContext>();
+    .AddEntityFrameworkStores<ApplicationDbContext>()
+    .AddPasswordValidator<CustomPasswordValidator>(); // custom password validator add 
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();

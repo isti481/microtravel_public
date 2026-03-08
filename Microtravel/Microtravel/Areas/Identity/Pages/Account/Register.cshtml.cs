@@ -74,8 +74,8 @@ namespace Microtravel.Areas.Identity.Pages.Account
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
-            [Required]
-            [EmailAddress]
+            [Required(ErrorMessage = "Az Email mező kitöltése kötelező.")]
+            [EmailAddress(ErrorMessage = "Érvényes email címet adj meg.")]
             [Display(Name = "Email")]
             public string Email { get; set; }
 
@@ -83,10 +83,12 @@ namespace Microtravel.Areas.Identity.Pages.Account
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
-            [Required]
-            [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
+            [Required(ErrorMessage = "A jelszó mező kitöltése kötelező.")]
+            //[StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
+            [StringLength(100, ErrorMessage = "A jelszónak legalább {2}, de legfejebb {1} karakterből kell állnia.", MinimumLength = 6)]
             [DataType(DataType.Password)]
-            [Display(Name = "Password")]
+            //[Display(Name = "Password")]
+            //[Display(Name = "jelszó")]
             public string Password { get; set; }
 
             /// <summary>
@@ -95,7 +97,7 @@ namespace Microtravel.Areas.Identity.Pages.Account
             /// </summary>
             [DataType(DataType.Password)]
             [Display(Name = "Confirm password")]
-            [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+            [Compare("Password", ErrorMessage = "A két jelszó nem egyezik.")]
             public string ConfirmPassword { get; set; }
         }
 
