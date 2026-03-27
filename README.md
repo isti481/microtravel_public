@@ -1,6 +1,6 @@
 ## ⚠️ Fejlesztés alatt
 
-Oldal elérhetősége: http://fejlesztooldal.runasp.net/
+Oldal elérhetősége: https://fejlesztooldal.runasp.net/
 
 ## ℹ️ Az alkalmazás célja
 
