@@ -14,6 +14,27 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
+// CORS enable
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("MyCorsPolicy", policy =>
+    {
+        //all
+        //policy.AllowAnyOrigin()
+        //restricted
+        policy.WithOrigins(
+                "https://isti481.github.io",
+                "http://localhost:8080"
+            )
+            .AllowAnyHeader()    // all header 
+            .AllowAnyMethod();   // all HTTP method 
+    });
+});
+
+builder.Services.AddControllers(); // ha Web API-t használsz
+
+// CORS end
+
 // custom validators off 
 builder.Services.AddDefaultIdentity<IdentityUser>(options =>
     {
@@ -48,7 +69,17 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+// CORS
+app.UseCors("MyCorsPolicy");
+
+// CORS END
+
 app.UseAuthorization();
+
+// CORS
+
+app.MapControllers();
+// CORS END
 
 app.MapControllerRoute(
     name: "default",

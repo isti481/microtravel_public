@@ -6,74 +6,75 @@
 
 <h4>Utazás szerkesztése</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit" method="post" enctype="multipart/form-data">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="Name" class="control-label">Utazás neve</label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="TravelTypeId" class="control-label">Utazás típusa</label>
-                <select asp-for="TravelTypeId" class="form-control" asp-items="ViewBag.TravelTypeId"></select>
-                <span asp-validation-for="TravelTypeId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="TravelDealTypeId" class="control-label">Utazás jellege</label>
-                <select asp-for="TravelDealTypeId" class="form-control" asp-items="ViewBag.TravelDealTypeId"></select>
-                <span asp-validation-for="TravelDealTypeId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label">Leírás</label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Price" class="control-label">Ár</label>
-                <input asp-for="Price" class="form-control" />
-                <span asp-validation-for="Price" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="travelPictureUrl" class="control-label">Jelenlegi kép:</label>
-                    <img src="@Model.travelPictureUrl"
-                         class="img-fluid rounded mt-3"
-                         id="fixed-img" />
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Edit" method="post" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label">Utazás neve</label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="TravelTypeId" class="control-label">Utazás típusa</label>
+                    <select asp-for="TravelTypeId" class="form-control" asp-items="ViewBag.TravelTypeId"></select>
+                    <span asp-validation-for="TravelTypeId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="TravelDealTypeId" class="control-label">Utazás jellege</label>
+                    <select asp-for="TravelDealTypeId" class="form-control" asp-items="ViewBag.TravelDealTypeId"></select>
+                    <span asp-validation-for="TravelDealTypeId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description" class="control-label">Leírás</label>
+                    <input asp-for="Description" class="form-control" />
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Price" class="control-label">Ár</label>
+                    <input asp-for="Price" class="form-control" />
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="travelPictureUrl" class="control-label">Jelenlegi kép:</label>
+                        <img src="@Model.travelPictureUrl"
+                             class="img-fluid rounded mt-3"
+                             id="fixed-img" />
                 
-            </div>
-            <br />
-            <div class="form-group">
-                <label asp-for="travelPictureUrl" class="control-label">Jelenlegi kép cseréje</label>
-                <input type="file" name="file" class="form-control" accept="image/*" />
-                <span asp-validation-for="travelPictureUrl" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="TravelDate" class="control-label">Tervezett kezdési dátum</label>
-                <input asp-for="TravelDate" class="form-control" />
-                <span asp-validation-for="TravelDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="TravelRegDate" class="control-label">Regisztáció dátuma</label>
-                <p>@Model.TravelRegDate</p>
-            </div>
-            <label asp-for="Enabled" class="control-label">Engedélyezés a weboldalon</label>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" asp-for="Enabled" value="1" />
-                <label class="form-check-label">Igen</label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" asp-for="Enabled" value="0" />
-                <label class="form-check-label">Nem</label>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Mentés" class="btn btn-primary" />
-            </div>
-        </form>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label asp-for="travelPictureUrl" class="control-label">Jelenlegi kép cseréje</label>
+                    <input type="file" name="file" class="form-control" accept="image/*" />
+                    <span asp-validation-for="travelPictureUrl" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="TravelDate" class="control-label">Tervezett kezdési dátum</label>
+                    <input asp-for="TravelDate" class="form-control" />
+                    <span asp-validation-for="TravelDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="TravelRegDate" class="control-label">Regisztáció dátuma</label>
+                    <p>@Model.TravelRegDate</p>
+                </div>
+                <label asp-for="Enabled" class="control-label">Engedélyezés a weboldalon</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" asp-for="Enabled" value="1" />
+                    <label class="form-check-label">Igen</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" asp-for="Enabled" value="0" />
+                    <label class="form-check-label">Nem</label>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Mentés" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
     </div>
 </div>
-
 <div>
     <a asp-action="Index">Vissza</a>
 </div>
