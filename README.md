@@ -29,15 +29,15 @@ Content-Type application/json
 autentikáció: 
 key:token
 value:dzAAeYvO*HUbppD7jh9Sc
-GET (http://fejlesztooldal.runasp.net/api/travels)
-GET (http://fejlesztooldal.runasp.net/api/travels/1)
+GET (https://fejlesztooldal.runasp.net/api/travels)
+GET (https://fejlesztooldal.runasp.net/api/travels/1)
 
 POST, DELETE, PUT kérésekre
 autentikáció: 
 key:token
 value:7C561*gC9F50
 
-POST http://fejlesztooldal.runasp.net/api/travels
+POST https://fejlesztooldal.runasp.net/api/travels
 teszt adat:
   {
     "name": "Utazás Budapestre",
@@ -49,7 +49,7 @@ teszt adat:
     "travelDate": "2026-03-05T14:11:00"
   }
   
-PUT http://fejlesztooldal.runasp.net/api/travels/5
+PUT https://fejlesztooldal.runasp.net/api/travels/5
 teszt adat:
   {
     "id": 5,
@@ -63,7 +63,7 @@ teszt adat:
       "enabled": 0
   }
   
-DELETE http://fejlesztooldal.runasp.net/api/travels/5
+DELETE https://fejlesztooldal.runasp.net/api/travels/5
   {
     "id": 5
   }
